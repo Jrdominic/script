@@ -1,0 +1,144 @@
+
+if game.PlaceId == 3101667897 then
+    local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+    local Window = OrionLib:MakeWindow({Name = "Toxxic Script|Undetected", HidePremium = false, IntroText = "Toxxic Scripts", SaveConfig = true, ConfigFolder = "OrionTest"})
+
+
+
+    local FarmTab = Window:MakeTab({
+        Name = "AutoFarm",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+    
+
+
+    local TeleportTab = Window:MakeTab({
+        Name = "Teleports",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    })
+    
+
+
+
+
+
+
+    FarmTab:AddButton({
+        Name = "AutoLevel (cant be turned off cry ab it)",
+        Callback = function()
+            local children = workspace.Hoops:GetChildren()
+    
+coroutine.wrap(function()
+    repeat wait() until game:GetService("Players").LocalPlayer
+    local VirtualUser = game:GetService("VirtualUser")
+    game:GetService("Players").LocalPlayer.Idled:Connect(function()
+        VirtualUser:CaptureController()
+        VirtualUser:ClickButton2(Vector2.new())
+    end)
+end)()
+
+function runfarm()
+    coroutine.wrap(function()
+        while wait(0) do
+            for i, child in ipairs(children) do
+                if child.Name == "Hoop" then
+                    child.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                    child.Transparency = 1
+                    child.hoopSound.Volume = 0
+                    if child:FindFirstChild("hoopParticle") then
+                        child.playerParticle:Destroy()
+                        child.hoopGui:Destroy()
+                        child.hoopParticle:Destroy()
+                    end
+                end    
+            end
+        end
+    end)()
+    
+    coroutine.wrap(function()
+        while wait(0) do
+            for i,v in pairs(game:GetService("Workspace").orbFolder:GetDescendants()) do
+                if string.match(v.Name, " Orb") then
+                    v.outerOrb.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                elseif v.Name == "Gem" then
+                    v.outerGem.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                end
+            end
+        end
+    end)()
+end
+
+runfarm()
+
+game.Players.LocalPlayer.CharacterAdded:Connect(function()
+    repeat wait()
+        print("Waiting")
+    until game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+    
+    runfarm()
+end)
+          end    
+    })
+    
+    FarmTab:AddButton({
+        Name = "AutoRebirth (cant be turned off cry ab it)",
+        Callback = function()
+            while wait() do
+                game:GetService("ReplicatedStorage").rEvents.rebirthEvent:FireServer("rebirthRequest")
+             end
+          end    
+    })
+
+
+
+
+
+    TeleportTab:AddButton({
+        Name = "City",
+        Callback = function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-577.469421, 4.12688971, 314.584137, 0.891042471, 2.66538027e-08, -0.453919917, -2.72489444e-08, 1, 5.22963362e-09, 0.453919917, 7.70901298e-09, 0.891042471)
+          end    
+    })
+
+
+
+    TeleportTab:AddButton({
+        Name = "Snow cityy (wowwwww)",
+        Callback = function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-476.967346, 4.16060829, 2314.85278, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+          end    
+    })
+
+
+
+
+
+    TeleportTab:AddButton({
+        Name = "Magma city (KYS)",
+        Callback = function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1634.90039, 4.22689772, 4332.16406, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+          end    
+    })
+
+
+
+
+
+    TeleportTab:AddButton({
+        Name = "Legends Highway retard",
+        Callback = function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3697.41724, 71.7405548, 5594.83887, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+          end    
+    })
+
+
+
+
+
+
+
+
+end
+    OrionLib:Init()
